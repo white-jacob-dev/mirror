@@ -26,17 +26,13 @@ async function scrapeProduct(url) {
 
 
 router.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/main.html'));
+    res.sendFile(path.join(__dirname+'/index.html'));
 });
-
 
 router.get('/data', async function(req, res) {
     let data = await scrapeProduct('https://www.fcbarcelona.com/en/football/first-team/schedule');
     res.send(data)
   })
-
-
-
 
   app.use('/', router);
 

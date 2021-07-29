@@ -7,7 +7,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="style.css">
     </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -16,14 +16,15 @@
             $.getJSON( "/data", function( data ) {
                 var items = [];
                 $.each( data, function( key, val ) {
-                  items.push( "<li id='" + key + "'>" + val + "</li>" );
+                  items.push( "<p id='" + key + "'>" + val + "</p>" );
                 });
                
-                $( "<ul/>", {
+                $( "<p/>", {
                   "class": "my-new-list",
                   html: items.join( "" )
-                }).appendTo( "body" );
+                }).appendTo( ".nextgame" );
               });
         </script>
+        <a class="nextgame"></a>
     </body>
 </html>
