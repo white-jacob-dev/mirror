@@ -1,0 +1,23 @@
+{
+  "name": "redesigned-octo-adventure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/white-jacob-dev/redesigned-octo-adventure.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/white-jacob-dev/redesigned-octo-adventure/issues"
+  },
+  "homepage": "https://github.com/white-jacob-dev/redesigned-octo-adventure#readme",
+  "dependencies": {
+    "puppeteer": "^10.1.0"
+  }
+}
