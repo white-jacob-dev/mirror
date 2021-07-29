@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/white-jacob-dev/redesigned-octo-adventure#readme",
   "dependencies": {
-    "puppeteer": "^10.1.0"
+    "express": "^4.17.1",
+    "puppeteer": "^10.1.0",
+    "save": "^2.4.0"
   }
 }
