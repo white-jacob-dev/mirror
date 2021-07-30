@@ -1,0 +1,32 @@
+@font-face {
+    font-family: GilroyExtraBold;
+    src: url("fonts/Gilroy-ExtraBold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: GilroyLight;
+    src: url("fonts/Gilroy-Light.otf") format("opentype");
+}
+html {
+    background: linear-gradient(299.64deg, #C3D1E4 -0.02%, #DDE7F3 54.14%, #D4E0ED 100.43%);
+}
+
+body {
+    font-family: GilroyExtraBold;
+}
+
+/* Style the counter cards */
+.card {
+    width: 10%;
+    padding: 16px;
+    text-align: center;
+    background: linear-gradient(0deg, #E3EDF7, #E3EDF7);
+    box-shadow: -4px -2px 16px #FFFFFF, 4px 2px 12px rgba(136, 165, 191, 0.54);
+    border-radius: 16px;
+    
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
