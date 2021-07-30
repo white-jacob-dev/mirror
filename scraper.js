@@ -6,38 +6,65 @@ const router = express.Router();
 const app = express();
 const port = 3000;
 
-async function scrapeProduct(url) {
+//Get date and opponent of next game
+async function scrapeGameData(url) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
 
-  const [el] = await page.$x(
+  //Get the date of the next game
+  const [nextGame] = await page.$x(
     '//*[@id="main"]/div/div/div/section[1]/div[2]/div[2]/div[3]/a/div[1]/div[1]'
   );
-  const txt = await el.getProperty("textContent");
-  const rawTxt = await txt.jsonValue();
+  const nextGameTxt = await nextGame.getProperty("textContent");
+  const nextGameRawTxt = await nextGameTxt.jsonValue();
+
+  //Get the next opponent
+  const [nextOpponent] = await page.$x(
+    '//*[@id="main"]/div/div/div/section[1]/div[3]/div/div[2]/div[2]/a/div[1]/div[1]'
+  );
+  const nextOpponentTxt = await nextOpponent.getProperty("textContent");
+  const nextOpponentRawTxt = await nextOpponentTxt.jsonValue();
 
   browser.close();
-
-  console.log({ rawTxt });
-
-  return { rawTxt };
+  return { nextGameRawTxt, nextOpponentRawTxt};
 }
 
-router.get("/", function (req, res) {
+//Get the next opponent's logo
+async function scrapeLogo(url) {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto(url);
+
+  const [nextOpponentLogo] = await page.$x(
+    '//*[@id="main"]/div/div/div/section[1]/div[3]/div/div[2]/div[2]/a/div[1]/div[2]/span[1]/i'
+  );
+  await page.evaluate(() => document.body.style.background = 'transparent');
+  await nextOpponentLogo.screenshot({path:"./design/logo.png", omitBackground: true});
+
+  browser.close();
+  return;
+}
+
+
+
+router.get("/", async function (req, res) {
+  await scrapeLogo("https://www.fcbarcelona.com/en/football/first-team/schedule")
   res.sendFile(path.join(__dirname + "/index.html"));
 });
 
-router.get("/data", async function (req, res) {
-  let data = await scrapeProduct(
+router.get("/gamedata", async function (req, res) {
+  let data = await scrapeGameData(
     "https://www.fcbarcelona.com/en/football/first-team/schedule"
   );
   res.send(data);
 });
 
-app.use(express.static(__dirname + '/design'));
+//Express JS static folder that gets hosted
+app.use("/design",express.static('design'));
+
 app.use("/", router);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`App launched at: http://localhost:${port}`);
 });

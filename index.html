@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <body>
-    <script>
-      $.getJSON("/data", function (data) {
-        var items = [];
-        $.each(data, function (key, val) {
-          items.push("<p id='" + key + "'>" + val + "</p>");
-        });
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="design/style.css" />
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        $("<p/>", {
-          class: "my-new-list",
-          html: items.join(""),
-        }).appendTo(".date");
+<body>
+  <script>
+    $.getJSON("/gamedata", function (data) {
+      var items = [];
+      $.each(data, function (key, val) {
+        items.push(val);
       });
-    </script>
-    <div class="card">
-      <a class="date"></a>
-    </div>
-  </body>
+
+      console.log(items);
+      
+      $("<p/>", {
+        html: items[0],
+      }).appendTo("#next-game-date");
+      $("<p/>", {
+        html: items[1],
+      }).appendTo("#next-opponent");
+    });
+  </script>
+
+  <div class="card">
+    <p class="label">Next Game</p>
+    <p class="info" id="next-game-date"></p>
+  </div>
+  <div class="card">
+    <p class="label">Next Opponent</p>
+    <img src="./design/logo.png" width="50" height="50">
+    <p class="info" id="next-opponent"></p>
+  </div>
+
+</body>
+
 </html>
