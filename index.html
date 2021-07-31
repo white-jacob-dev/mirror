@@ -15,19 +15,30 @@
 <body>
   <script>
     $.getJSON("/gamedata", function (data) {
-      var items = [];
+      var info = [];
       $.each(data, function (key, val) {
-        items.push(val);
+        info.push(val.trim());
       });
 
-      console.log(items);
+      console.log(info);
+
+      //Convert Spanish Peninsular Time to Eastern Standard Time
+      easternTime = Number(info[1][0]+info[1][1])-6-12+info[1].slice(2);
+      ampm = '';
+      if(Number(info[1][0]+info[1][1])>12){
+        ampm = " PM";
+      } else ampm = " AM";
       
       $("<p/>", {
-        html: items[0],
+        html: info[0],
       }).appendTo("#next-game-date");
       $("<p/>", {
-        html: items[1],
+        html: easternTime+ampm,
+      }).appendTo("#next-game-time");
+      $("<p/>", {
+        html: info[2],
       }).appendTo("#next-opponent");
+      
     });
   </script>
 
@@ -36,10 +47,15 @@
     <p class="info" id="next-game-date"></p>
   </div>
   <div class="card">
+    <p class="label">Kickoff</p>
+    <p class="info" id="next-game-time"></p>
+  </div>
+  <div class="card">
     <p class="label">Next Opponent</p>
-    <img src="./design/logo.png" width="50" height="50">
+    <!-- <img src="./design/logo.png" width="50" height="50"> -->
     <p class="info" id="next-opponent"></p>
   </div>
+  
 
 </body>
 

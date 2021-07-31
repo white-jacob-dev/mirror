@@ -17,8 +17,16 @@ html {
     justify-content: center;
 }
 
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
 .card {
-    width: auto;
+    width:fit-content;
     text-align: center;
     background: linear-gradient(0deg, #E3EDF7, #E3EDF7);
     box-shadow: -4px -2px 16px #FFFFFF, 4px 2px 16px rgba(136, 165, 191, 0.54);
