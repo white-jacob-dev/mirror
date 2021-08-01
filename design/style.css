@@ -10,8 +10,8 @@
 html {
     height: 100%;
     width: 100%;
-    background: linear-gradient(299.64deg, #C3D1E4 -0.02%, #DDE7F3 54.14%, #D4E0ED 100.43%);
-    color: #31456A;
+    background: linear-gradient(299.64deg, #c3d1e4 -0.02%, #dde7f3 54.14%, #d4e0ed 100.43%);
+    color: #31456a;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,13 +23,11 @@ body {
     flex-direction: column;
 }
 
-
-
 .card {
-    width:fit-content;
+    width: fit-content;
     text-align: center;
-    background: linear-gradient(0deg, #E3EDF7, #E3EDF7);
-    box-shadow: -4px -2px 16px #FFFFFF, 4px 2px 16px rgba(136, 165, 191, 0.54);
+    background: linear-gradient(0deg, #e3edf7, #e3edf7);
+    box-shadow: -4px -2px 16px #ffffff, 4px 2px 16px rgba(136, 165, 191, 0.54);
     border-radius: 16px;
     margin-bottom: 15%;
 }
@@ -48,3 +46,45 @@ body {
     padding-right: 25px;
 }
 
+.big-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 50px;
+    top: 50px;
+
+    background: #e3edf7;
+    box-shadow: -16px -2px 56px #ffffff, 16px 10px 48px rgba(136, 165, 191, 0.58);
+    border-radius: 50%;
+}
+
+fill-circle {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    left: 75px;
+    top: 75px;
+
+    background: #e3edf7;
+    box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 7px rgba(136, 165, 191, 0.48);
+    border-radius: 50%;
+}
+
+.fill {
+    background-image: 
+        linear-gradient(100deg, transparent 50%, #e6600a 50%),
+        linear-gradient(90deg, #e6600a 50%, transparent 50%);
+    box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.6), 4px 12px 32px rgba(244, 102, 0, 0.42);
+}
+
+.middle-circle {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 125px;
+    top: 125px;
+
+    background: #e3edf7;
+    box-shadow: -16px -2px 56px #ffffff, 16px 10px 48px rgba(136, 165, 191, 0.58);
+    border-radius: 50%;
+}
