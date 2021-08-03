@@ -1,61 +1,80 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="design/style.css" />
-  </head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <body>
-    <script>
-      $.getJSON("/gamedata", function (data) {
-        var info = [];
-        $.each(data, function (key, val) {
-          info.push(val.trim());
-        });
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="design/style.css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        console.log(info);
-
-        //Convert Spanish Peninsular Time to Eastern Standard Time
-        easternTime =
-          Number(info[1][0] + info[1][1]) - 6 - 12 + info[1].slice(2);
-        ampm = "";
-        if (Number(info[1][0] + info[1][1]) > 12) {
-          ampm = " PM";
-        } else ampm = " AM";
-
-        $("<p/>", {
-          html: info[0],
-        }).appendTo("#next-game-date");
-        $("<p/>", {
-          html: easternTime + ampm,
-        }).appendTo("#next-game-time");
-        $("<p/>", {
-          html: info[2],
-        }).appendTo("#next-opponent");
+<body>
+  <script>
+    $.getJSON("/gamedata", function (data) {
+      var info = [];
+      $.each(data, function (key, val) {
+        info.push(val.trim());
       });
-    </script>
+      console.log(info);
 
-    <div class="card">
-      <p class="label">Next Game</p>
-      <p class="info" id="next-game-date"></p>
-    </div>
-    <div class="card">
-      <p class="label">Kickoff</p>
-      <p class="info" id="next-game-time"></p>
-    </div>
-    <div class="card">
-      <p class="label">Next Opponent</p>
-      <!-- <img src="./design/logo.png" width="50" height="50"> -->
-      <p class="info" id="next-opponent"></p>
-    </div>
-    <div class="big-circle"></div>
-    <fill-circle class="fill"> </fill-circle>
-    <div class="middle-circle"></div>
-  </body>
+      //Convert Spanish Peninsular Time to Eastern Standard Time
+    easternTime = Number(info[1][0] + info[1][1]) - 6 - 12 + info[1].slice(2);
+    ampm = "";
+    if (Number(info[1][0] + info[1][1]) > 12) {
+      ampm = " PM";
+    } else ampm = " AM";
+    $("<p/>", {
+      html: info[0],
+    }).appendTo("#next-game-date");
+    $("<p/>", {
+      html: easternTime + ampm,
+    }).appendTo("#next-game-time");
+    $("<p/>", {
+      html: info[2],
+    }).appendTo("#next-opponent");
+    });
+
+    const element = document.getElementById('test')
+
+    $(document).ready(function(){
+      $(".button").click(function(){
+        $("html").toggleClass("dark-html")
+        $(".card").toggleClass("dark-card");
+        $(".button").toggleClass("dark-button");
+        $(".label").toggleClass("dark-label");
+        $(".info").toggleClass("dark-info");
+        $(".material-icons-outlined").toggleClass("dark");
+        $(".material-icons-outlined").removeClass("spin");
+        $(".material-icons-outlined").addClass("spin");
+      });
+    });
+  </script>
+
+  <div class="button" href=#>
+    <span class="material-icons-outlined"style="font-size: 40px">
+      dark_mode
+    </span>
+  </div>
+  <div class="card">
+    <p class="label">Next Game</p>
+    <p class="info" id="next-game-date"></p>
+  </div>
+  <div class="card">
+    <p class="label">Kickoff</p>
+    <p class="info" id="next-game-time"></p>
+  </div>
+  <div class="card">
+    <p class="label">Next Opponent</p>
+    <!-- <img src="./design/logo.png" width="50" height="50"> -->
+    <p class="info" id="next-opponent"></p>
+  </div>
+</body>
+
 </html>
