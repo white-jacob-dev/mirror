@@ -26,15 +26,22 @@ async function scrapeGameData(url) {
   const nextGameTimeTxt = await nextGameTime.getProperty("textContent");
   const nextGameTimeRawTxt = await nextGameTimeTxt.jsonValue();
 
-  //Get the next opponent
-  const [nextOpponent] = await page.$x(
+  //Get the next home team
+  const [nextHomeTeam] = await page.$x(
     '//*[@id="main"]/div/div/div/section[1]/div[3]/div/div[2]/div[2]/a/div[1]/div[1]'
   );
-  const nextOpponentTxt = await nextOpponent.getProperty("textContent");
-  const nextOpponentRawTxt = await nextOpponentTxt.jsonValue();
+  const nextHomeTeamTxt = await nextHomeTeam.getProperty("textContent");
+  const nextHomeTeamRawTxt = await nextHomeTeamTxt.jsonValue();
+
+  //Get the next away team
+  const [nextAwayTeam] = await page.$x(
+    '//*[@id="main"]/div/div/div/section[1]/div[2]/div[2]/div[3]/a/div[4]/div[3]/div[1]'
+  );
+  const nextAwayTeamTxt = await nextAwayTeam.getProperty("textContent");
+  const nextAwayTeamRawTxt = await nextAwayTeamTxt.jsonValue();
 
   browser.close();
-  return { nextGameRawTxt, nextGameTimeRawTxt, nextOpponentRawTxt, };
+  return { nextGameRawTxt, nextGameTimeRawTxt, nextHomeTeamRawTxt, nextAwayTeamRawTxt};
 }
 
 // -------------WORK IN PROGRESS------------------

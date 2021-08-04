@@ -25,40 +25,50 @@
       console.log(info);
 
       //Convert Spanish Peninsular Time to Eastern Standard Time
-    easternTime = Number(info[1][0] + info[1][1]) - 6 - 12 + info[1].slice(2);
-    ampm = "";
-    if (Number(info[1][0] + info[1][1]) > 12) {
-      ampm = " PM";
-    } else ampm = " AM";
-    $("<p/>", {
-      html: info[0],
-    }).appendTo("#next-game-date");
-    $("<p/>", {
-      html: easternTime + ampm,
-    }).appendTo("#next-game-time");
-    $("<p/>", {
-      html: info[2],
-    }).appendTo("#next-opponent");
+      ampm = "";
+      easternTime = Number(info[1][0] + info[1][1]) - 6 - 12 + info[1].slice(2);
+      if (Number(info[1][0] + info[1][1]) > 12) {
+        ampm = " PM";
+      } else ampm = " AM";
+
+      //Decide which team is the opponent
+      opponent = "";
+      if (info[2] != "FC Barcelona") {
+        opponent = info[2];
+      } else opponent = info[3];
+
+      $("<p/>", {
+        html: info[0],
+      }).appendTo("#next-game-date");
+      $("<p/>", {
+        html: easternTime + ampm + " EST",
+      }).appendTo("#next-game-time");
+      $("<p/>", {
+        html: opponent,
+      }).appendTo("#next-opponent");
     });
 
     const element = document.getElementById('test')
 
-    $(document).ready(function(){
-      $(".button").click(function(){
-        $("html").toggleClass("dark-html")
-        $(".card").toggleClass("dark-card");
+    $(document).ready(function () {
+      $(".button").click(function () {
         $(".button").toggleClass("dark-button");
         $(".label").toggleClass("dark-label");
         $(".info").toggleClass("dark-info");
         $(".material-icons-outlined").toggleClass("dark");
-        $(".material-icons-outlined").removeClass("spin");
-        $(".material-icons-outlined").addClass("spin");
+        $(".material-icons-outlined").toggleClass("spin");
+        $("body").toggleClass("fade-background");
+        $(".card").toggleClass("fade-background");
+        $(".button").toggleClass("fade-background");
+        $(".card").toggleClass("dark-card");
+        $(".label").toggleClass("fade-text");
+        $(".info").toggleClass("fade-text");
       });
     });
   </script>
 
   <div class="button" href=#>
-    <span class="material-icons-outlined"style="font-size: 40px">
+    <span class="material-icons-outlined" style="font-size: 40px;">
       dark_mode
     </span>
   </div>

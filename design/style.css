@@ -10,33 +10,31 @@
 html {
     height: 100%;
     width: 100%;
-    background: linear-gradient(299.64deg, #c3d1e4 -0.02%, #dde7f3 54.14%, #d4e0ed 100.43%);
-    color: #31456a;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.dark-html {
-    background: linear-gradient(167.96deg, #262B2F 3.36%, #16191D 76.99%);
 }
 
 body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    background: linear-gradient(-45deg, #16191D, #262B2F, #c3d1e4, #e3edf7);
+	background-size: 400% 400%;
 }
 
 .card {
     width: fit-content;
     text-align: center;
-    background: linear-gradient(0deg, #e3edf7, #e3edf7);
+    background: linear-gradient(-45deg, #16191D, #262B2F, #e3edf7, #e3edf7);
+    background-size: 400% 400%;
     box-shadow: -4px -2px 16px #ffffff, 4px 2px 16px rgba(136, 165, 191, 0.54);
     border-radius: 16px;
     margin-bottom: 8%;
     margin-top: 8%;
+    user-select: none;
 }
 .dark-card {
-    background: linear-gradient(94.6deg, #32383E -60.81%, #17191C 185.78%);
     box-shadow: -5px -6px 16px rgba(195, 200, 205, 0.04), 6px 6px 28px rgba(0, 0, 0, 0.3);
 }
 
@@ -45,6 +43,8 @@ body {
     display: inline-block;
     padding-right: 5px;
     padding-left: 25px;
+    user-select: none;
+    color: #31456a;
 }
 .dark-label {
     color: #D6E1EF
@@ -55,6 +55,8 @@ body {
     display: inline-block;
     padding-left: 5px;
     padding-right: 25px;
+    user-select: none;
+    color: #31456a;
 }
 .dark-info {
     color: #D6E1EF
@@ -63,7 +65,8 @@ body {
 .button {
     width: 100px;
     height: 100px;
-    background: linear-gradient(0deg, #e3edf7, #e3edf7);
+    background: linear-gradient(-45deg, #16191D, #32363a, #e3edf7, #e3edf7);
+    background-size: 400% 400%;
     box-shadow: -5px -6px 16px 0px #ffffff, 6px 6px 28px rgb(136 165 191 / 58%);
     border-radius: 50%;
     margin-bottom: 8%;
@@ -74,15 +77,16 @@ body {
     cursor: pointer;
 }
 .button:active {
-    box-shadow: inset -20px -20px 50px #ffffff, inset 20px 20px 50px rgba(136, 165, 191, 0.58);
+    box-shadow: inset -20px -20px 50px #ffffff, inset 20px 20px 50px rgba(136, 165, 191, 0.58),
+    -5px -6px 16px 0px #ffffff, 6px 6px 28px rgb(136 165 191 / 58%);
 }
 
 .dark-button {
-    background: linear-gradient(94.6deg, #32383E -60.81%, #17191C 185.78%);
     box-shadow: -5px -6px 16px rgba(195, 200, 205, 0.04), 6px 6px 28px rgba(0, 0, 0, 0.3);
 }
 .dark-button:active {
-    box-shadow: inset -20px -20px 50px rgba(195, 200, 205, 0.04), inset 20px 20px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: inset -20px -20px 50px rgba(195, 200, 205, 0.04), inset 20px 20px 50px rgba(0, 0, 0, 0.3),
+    -5px -6px 16px rgba(195, 200, 205, 0.04), 6px 6px 28px rgba(0, 0, 0, 0.3);
 }
 
 .material-icons-outlined { 
@@ -90,8 +94,9 @@ body {
     user-select: none;
 }
 .material-icons-outlined.dark { 
-    color: #ffffff;
+    color: cyan;
     user-select: none;
+    text-shadow: 0px 0px 10px cyan;
 }
 
 @keyframes spin {
@@ -102,11 +107,33 @@ body {
         transform:rotate(360deg);
     }
 }
-
 .spin {
-  animation-name: spin;
-  animation-duration: 1000ms;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
+    animation: spin 1s ease 1;
 }
 
+@keyframes fade-background {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 100% 100%;
+	}
+}
+.fade-background {
+    animation: fade-background 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-text {
+	0% {
+		color: #31456a;
+        ;
+	}
+	100% {
+		color: #D6E1EF;
+	}
+}
+.fade-text {
+    animation: fade-text 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
