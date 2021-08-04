@@ -90,25 +90,27 @@ body {
 }
 
 .material-icons-outlined { 
-    color: #31456a; 
     user-select: none;
+    color: #31456a;
 }
 .material-icons-outlined.dark { 
-    color: cyan;
     user-select: none;
-    text-shadow: 0px 0px 10px cyan;
 }
 
 @keyframes spin {
     from {
         transform:rotate(0deg);
+        color: #31456a;
     }
     to {
         transform:rotate(360deg);
+        color: cyan;
+        text-shadow: 0px 0px 10px cyan;
     }
 }
 .spin {
     animation: spin 1s ease 1;
+    animation-fill-mode: forwards;
 }
 
 @keyframes fade-background {
