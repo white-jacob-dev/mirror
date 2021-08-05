@@ -9,6 +9,8 @@
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="design/style.css" />
+  <link rel="stylesheet" href="design/animations.css" />
+
   <link
     href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
     rel="stylesheet">
@@ -57,17 +59,34 @@
 
     $(document).ready(function () {
       $(".button").click(function () {
+        $("body").removeClass("fade-background-reverse");
+        $(".material-icons-outlined").removeClass("spin-reverse");
+        $(".label").removeClass("fade-text-reverse");
+        $(".info").removeClass("fade-text-reverse");
+        $(".card").removeClass("fade-bg-and-shadow-reverse");
+        $(".button").removeClass("fade-bg-and-shadow-reverse");
+
         $(".button").toggleClass("dark-button");
+        $(".card").toggleClass("dark-card");
         $(".label").toggleClass("dark-label");
         $(".info").toggleClass("dark-info");
         $(".material-icons-outlined").toggleClass("dark");
         $(".material-icons-outlined").toggleClass("spin");
         $("body").toggleClass("fade-background");
-        $(".card").toggleClass("fade-background");
-        $(".button").toggleClass("fade-background");
-        $(".card").toggleClass("dark-card");
         $(".label").toggleClass("fade-text");
         $(".info").toggleClass("fade-text");
+        $(".card").toggleClass("fade-bg-and-shadow");
+        $(".button").toggleClass("fade-bg-and-shadow");
+
+        if(!$(".button").hasClass("dark-button")){
+          $("body").toggleClass("fade-background-reverse");
+          $(".material-icons-outlined").toggleClass("spin-reverse");
+          $(".label").toggleClass("fade-text-reverse");
+          $(".info").toggleClass("fade-text-reverse");
+          $(".card").toggleClass("fade-bg-and-shadow-reverse");
+          $(".button").toggleClass("fade-bg-and-shadow-reverse");
+
+        }
       });
     });
   </script>

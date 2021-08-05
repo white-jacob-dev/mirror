@@ -1,0 +1,139 @@
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+        color: #31456a;
+    }
+    to {
+        transform:rotate(360deg);
+        color: cyan;
+        text-shadow: 0px 0px 10px cyan;
+    }
+}
+.spin {
+    animation: spin 1s ease 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes spin-reverse {
+    from {
+        transform:rotate(360deg);
+        color: cyan;
+        text-shadow: 0px 0px 10px cyan;
+    }
+    to {
+        transform:rotate(0deg);
+        color: #31456a;        
+    }
+}
+.spin-reverse {
+    animation: spin-reverse 1s ease 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-background {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 100% 100%;
+	}
+}
+.fade-background {
+    animation: fade-background 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-background-reverse {
+	0% {
+		background-position: 100% 100%;
+	}
+	100% {
+        background-position: 0% 50%;
+	}
+}
+.fade-background-reverse {
+    animation: fade-background-reverse 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-text {
+	0% {
+		color: #31456a;
+	}
+	100% {
+		color: #D6E1EF;
+	}
+}
+.fade-text {
+    animation: fade-text 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
+@keyframes fade-text-reverse {
+	0% {
+        color: #D6E1EF;
+	}
+	100% {
+		color: #31456a;
+	}
+}
+.fade-text-reverse {
+    animation: fade-text-reverse 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-shadow {
+    0% {
+        box-shadow: -4px -2px 16px #ffffff, 4px 2px 16px rgba(136, 165, 191, 0.54);
+    }
+    100% {
+        box-shadow: -5px -6px 16px rgba(195, 200, 205, 0.04), 6px 6px 28px rgba(0, 0, 0, 0.3);
+    }
+}
+.fade-shadow {
+    animation: fade-shadow 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fade-shadow-reverse {
+    0% {
+        box-shadow: -5px -6px 16px rgba(195, 200, 205, 0.04), 6px 6px 28px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+        box-shadow: -4px -2px 16px #ffffff, 4px 2px 16px rgba(136, 165, 191, 0.54);
+    }
+}
+.fade-shadow-reverse {
+    animation: fade-shadow-reverse 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-bg-and-shadow {
+    0% {
+        background-position: 0% 50%;
+        box-shadow: -4px -2px 16px #ffffff, 4px 2px 16px rgba(136, 165, 191, 0.54);
+    }
+    100% {
+        background-position: 100% 100%;
+        box-shadow: -5px -6px 16px rgba(195, 200, 205, 0.04), 6px 6px 28px rgba(0, 0, 0, 0.3);
+    }
+}
+.fade-bg-and-shadow {
+    animation: fade-bg-and-shadow 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-bg-and-shadow-reverse {
+    0% {
+        background-position: 100% 100%;
+        box-shadow: -5px -6px 16px rgba(195, 200, 205, 0.04), 6px 6px 28px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+        background-position: 0% 50%;
+        box-shadow: -4px -2px 16px #ffffff, 4px 2px 16px rgba(136, 165, 191, 0.54);
+    }
+}
+.fade-bg-and-shadow-reverse {
+    animation: fade-bg-and-shadow-reverse 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
