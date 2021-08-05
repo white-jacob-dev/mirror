@@ -33,6 +33,7 @@
 
       //Decide which team is the opponent
       opponent = "";
+      stadium = "";
       if (info[2] != "FC Barcelona") {
         opponent = info[2];
       } else opponent = info[3];
@@ -46,6 +47,10 @@
       $("<p/>", {
         html: opponent,
       }).appendTo("#next-opponent");
+      $("<p/>", {
+        html: info[4],
+      }).appendTo("#next-location");
+      
     });
 
     const element = document.getElementById('test')
@@ -82,8 +87,11 @@
   </div>
   <div class="card">
     <p class="label">Next Opponent</p>
-    <!-- <img src="./design/logo.png" width="50" height="50"> -->
     <p class="info" id="next-opponent"></p>
+  </div>
+  <div class="card">
+    <p class="label">Location</p>
+    <p class="info" id="next-location"></p>
   </div>
 </body>
 

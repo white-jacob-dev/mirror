@@ -40,8 +40,15 @@ async function scrapeGameData(url) {
   const nextAwayTeamTxt = await nextAwayTeam.getProperty("textContent");
   const nextAwayTeamRawTxt = await nextAwayTeamTxt.jsonValue();
 
+  //Get the next game location
+  const [nextLocation] = await page.$x(
+    '//*[@id="main"]/div/div/div/section[1]/div[2]/div[2]/div[3]/a/div[3]/div[2]'
+  );
+  const nextLocationTxt = await nextLocation.getProperty("textContent");
+  const nextLocationRawTxt = await nextLocationTxt.jsonValue();
+
   browser.close();
-  return { nextGameRawTxt, nextGameTimeRawTxt, nextHomeTeamRawTxt, nextAwayTeamRawTxt};
+  return { nextGameRawTxt, nextGameTimeRawTxt, nextHomeTeamRawTxt, nextAwayTeamRawTxt, nextLocationRawTxt };
 }
 
 // -------------WORK IN PROGRESS------------------
@@ -73,7 +80,7 @@ router.get("/gamedata", async function (req, res) {
 });
 
 //Express JS static folder that gets hosted
-app.use("/design",express.static('design'));
+app.use("/design", express.static('design'));
 
 app.use("/", router);
 
