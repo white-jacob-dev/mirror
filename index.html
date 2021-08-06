@@ -20,6 +20,8 @@
 <body>
   <script>
     $.getJSON("/gamedata", function (data) {
+
+      //Store JSON data in an array
       var info = [];
       $.each(data, function (key, val) {
         info.push(val.trim());
@@ -40,20 +42,79 @@
         opponent = info[2];
       } else opponent = info[3];
 
-      $("<p/>", {
-        html: info[0],
-      }).appendTo("#next-game-date");
-      $("<p/>", {
-        html: easternTime + ampm + " EST",
-      }).appendTo("#next-game-time");
-      $("<p/>", {
-        html: opponent,
-      }).appendTo("#next-opponent");
-      $("<p/>", {
-        html: info[4],
-      }).appendTo("#next-location");
+      //Get current date and time
+      var myDate = new Date();
+      console.log(myDate);
+
+      //Format Barcelona game time string to a Date format
+      var day = info[0].slice(4,7);
+      var month = info[0].slice(7,10);
+      var temp = "temp";
+      var gameDateString = info[0].replace(month, temp).replace(day, month).replace(temp, " "+day)+"2021"+" "+info[1]+":00";
+      console.log(gameDateString);
+      var gameDate = new Date(gameDateString);
+      console.log(gameDate);
+
+
+    
+
+      function getTimeRemaining(endtime){
+        const total = Date.parse(endtime) - Date.parse(new Date());
+        const seconds = Math.floor( (total/1000) % 60 );
+        const minutes = Math.floor( (total/1000/60) % 60 );
+        const hours = Math.floor( (total/(1000*60*60)) % 24 );
+        const days = Math.floor( total/(1000*60*60*24) );
+
+        return {
+          total,
+          days,
+          hours,
+          minutes,
+          seconds
+        };
+      }
+
+      function initializeClock(id, endtime) {
+        const clock = document.getElementById(id);
+        const daysSpan = clock.querySelector('.days');
+        const hoursSpan = clock.querySelector('.hours');
+        const minutesSpan = clock.querySelector('.minutes');
+        const secondsSpan = clock.querySelector('.seconds');
+
+      function updateClock() {
+        const t = getTimeRemaining(endtime);
+
+        daysSpan.innerHTML = t.days;
+        hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+        if (t.total <= 0) {
+          clearInterval(timeinterval);
+        }
+      }
+
+      updateClock();
+      const timeinterval = setInterval(updateClock, 1000);
+    }
+
+    const deadline = new Date(gameDate);
+    initializeClock('clockdiv', deadline);
+
+    $("<p/>", {
+      html: info[0],
+    }).appendTo("#next-game-date");
+    $("<p/>", {
+      html: easternTime + ampm + " EST",
+    }).appendTo("#next-game-time");
+    $("<p/>", {
+      html: opponent,
+    }).appendTo("#next-opponent");
+    $("<p/>", {
+      html: info[4],
+    }).appendTo("#next-location");
       
-    });
+  });
 
     const element = document.getElementById('test')
 
@@ -85,11 +146,32 @@
           $(".info").toggleClass("fade-text-reverse");
           $(".card").toggleClass("fade-bg-and-shadow-reverse");
           $(".button").toggleClass("fade-bg-and-shadow-reverse");
-
         }
       });
     });
   </script>
+
+  <h1>Countdown Clock</h1>
+  <div id="clockdiv">
+    <div>
+      <span class="days"></span>
+      <div class="smalltext">Days</div>
+    </div>
+    <div>
+      <span class="hours"></span>
+      <div class="smalltext">Hours</div>
+    </div>
+    <div>
+      <span class="minutes"></span>
+      <div class="smalltext">Minutes</div>
+    </div>
+    <div>
+      <span class="seconds"></span>
+      <div class="smalltext">Seconds</div>
+    </div>
+  </div>
+
+
 
   <div class="button" href=#>
     <span class="material-icons-outlined" style="font-size: 40px;">
