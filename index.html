@@ -42,79 +42,53 @@
         opponent = info[2];
       } else opponent = info[3];
 
-      //Get current date and time
-      var myDate = new Date();
-      console.log(myDate);
-
       //Format Barcelona game time string to a Date format
-      var day = info[0].slice(4,7);
-      var month = info[0].slice(7,10);
+      var day = info[0].slice(4, 7);
+      var month = info[0].slice(7, 10);
       var temp = "temp";
-      var gameDateString = info[0].replace(month, temp).replace(day, month).replace(temp, " "+day)+"2021"+" "+info[1]+":00";
-      console.log(gameDateString);
+      var gameDateString = info[0].replace(month, temp).replace(day, month).replace(temp, " " + day) + "2021" + " " + info[1] + ":00";
       var gameDate = new Date(gameDateString);
       console.log(gameDate);
 
+      // Update the countdown every 1 second
+      var x = setInterval(function () {
 
-    
+        // Get today's date and time
+        var now = new Date().getTime();
 
-      function getTimeRemaining(endtime){
-        const total = Date.parse(endtime) - Date.parse(new Date());
-        const seconds = Math.floor( (total/1000) % 60 );
-        const minutes = Math.floor( (total/1000/60) % 60 );
-        const hours = Math.floor( (total/(1000*60*60)) % 24 );
-        const days = Math.floor( total/(1000*60*60*24) );
+        // Find the distance between now and the count down date
+        var distance = gameDate - now;
 
-        return {
-          total,
-          days,
-          hours,
-          minutes,
-          seconds
-        };
-      }
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      function initializeClock(id, endtime) {
-        const clock = document.getElementById(id);
-        const daysSpan = clock.querySelector('.days');
-        const hoursSpan = clock.querySelector('.hours');
-        const minutesSpan = clock.querySelector('.minutes');
-        const secondsSpan = clock.querySelector('.seconds');
+        // Display the result in the element with id="demo"
+        document.getElementById("countdown").innerHTML = days + "D " + hours + "H " + minutes + "M " + seconds + "S ";
 
-      function updateClock() {
-        const t = getTimeRemaining(endtime);
-
-        daysSpan.innerHTML = t.days;
-        hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-        if (t.total <= 0) {
-          clearInterval(timeinterval);
+        // If the count down is finished, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("demo").innerHTML = "LIVE";
         }
-      }
+      }, 1000);
 
-      updateClock();
-      const timeinterval = setInterval(updateClock, 1000);
-    }
+      $("<p/>", {
+        html: info[0],
+      }).appendTo("#next-game-date");
+      $("<p/>", {
+        html: easternTime + ampm + " EST",
+      }).appendTo("#next-game-time");
+      $("<p/>", {
+        html: opponent,
+      }).appendTo("#next-opponent");
+      $("<p/>", {
+        html: info[4],
+      }).appendTo("#next-location");
 
-    const deadline = new Date(gameDate);
-    initializeClock('clockdiv', deadline);
-
-    $("<p/>", {
-      html: info[0],
-    }).appendTo("#next-game-date");
-    $("<p/>", {
-      html: easternTime + ampm + " EST",
-    }).appendTo("#next-game-time");
-    $("<p/>", {
-      html: opponent,
-    }).appendTo("#next-opponent");
-    $("<p/>", {
-      html: info[4],
-    }).appendTo("#next-location");
-      
-  });
+    });
 
     const element = document.getElementById('test')
 
@@ -139,7 +113,7 @@
         $(".card").toggleClass("fade-bg-and-shadow");
         $(".button").toggleClass("fade-bg-and-shadow");
 
-        if(!$(".button").hasClass("dark-button")){
+        if (!$(".button").hasClass("dark-button")) {
           $("body").toggleClass("fade-background-reverse");
           $(".material-icons-outlined").toggleClass("spin-reverse");
           $(".label").toggleClass("fade-text-reverse");
@@ -150,28 +124,6 @@
       });
     });
   </script>
-
-  <h1>Countdown Clock</h1>
-  <div id="clockdiv">
-    <div>
-      <span class="days"></span>
-      <div class="smalltext">Days</div>
-    </div>
-    <div>
-      <span class="hours"></span>
-      <div class="smalltext">Hours</div>
-    </div>
-    <div>
-      <span class="minutes"></span>
-      <div class="smalltext">Minutes</div>
-    </div>
-    <div>
-      <span class="seconds"></span>
-      <div class="smalltext">Seconds</div>
-    </div>
-  </div>
-
-
 
   <div class="button" href=#>
     <span class="material-icons-outlined" style="font-size: 40px;">
@@ -193,6 +145,10 @@
   <div class="card">
     <p class="label">Location</p>
     <p class="info" id="next-location"></p>
+  </div>
+  <div class="card">
+    <p class="label">Countdown</p>
+    <p class="info" id="countdown"></p>
   </div>
 </body>
 

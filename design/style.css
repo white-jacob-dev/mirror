@@ -19,8 +19,8 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(-45deg, #16191D, #262B2F, #c3d1e4, #e3edf7);
-	background-size: 400% 400%;
+    background: linear-gradient(-45deg, #16191D, #262B2F, #e3edf7, #e3edf7);
+	background-size: 500% 500%;
 }
 
 .card {
@@ -65,7 +65,7 @@ body {
 .button {
     width: 100px;
     height: 100px;
-    background: linear-gradient(-45deg, #16191D, #32363a, #e3edf7, #e3edf7);
+    background: linear-gradient(290deg, #16191D, #32363a, #e3edf7, #e3edf7);
     background-size: 400% 400%;
     box-shadow: -5px -6px 16px 0px #ffffff, 6px 6px 28px rgb(136 165 191 / 58%);
     border-radius: 50%;
@@ -76,18 +76,18 @@ body {
     justify-content: center;
     cursor: pointer;
 }
-.button:active {
+/* .button:active {
     box-shadow: inset -20px -20px 50px #ffffff, inset 20px 20px 50px rgba(136, 165, 191, 0.58),
     -5px -6px 16px 0px #ffffff, 6px 6px 28px rgb(136 165 191 / 58%);
-}
+} */
 
 .dark-button {
     box-shadow: -5px -6px 16px rgba(195, 200, 205, 0.04), 6px 6px 28px rgba(0, 0, 0, 0.3);
 }
-.dark-button:active {
+/* .dark-button:active {
     box-shadow: inset -20px -20px 50px rgba(195, 200, 205, 0.04), inset 20px 20px 50px rgba(0, 0, 0, 0.3),
     -5px -6px 16px rgba(195, 200, 205, 0.04), 6px 6px 28px rgba(0, 0, 0, 0.3);
-}
+} */
 
 .material-icons-outlined { 
     user-select: none;
