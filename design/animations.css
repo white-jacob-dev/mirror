@@ -81,6 +81,33 @@
     animation-fill-mode: forwards;
 }
 
+@keyframes fade-text-neon {
+	0% {
+		color: #31456a;
+	}
+	100% {
+		color: cyan;
+        text-shadow: 0px 0px 10px cyan;
+	}
+}
+.fade-text-neon {
+    animation: fade-text-neon 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
+@keyframes fade-text-neon-reverse {
+	0% {
+        color: cyan;
+        text-shadow: 0px 0px 10px cyan;
+	}
+	100% {
+		color: #31456a;
+	}
+}
+.fade-text-neon-reverse {
+    animation: fade-text-neon-reverse 1000ms ease 1;
+    animation-fill-mode: forwards;
+}
+
 @keyframes fade-shadow {
     0% {
         box-shadow: -4px -2px 16px #ffffff, 4px 2px 16px rgba(136, 165, 191, 0.54);
