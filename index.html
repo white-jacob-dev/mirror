@@ -10,7 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="design/style.css" />
   <link rel="stylesheet" href="design/animations.css" />
-
   <link
     href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
     rel="stylesheet">
@@ -19,7 +18,22 @@
 
 <body>
   <script>
+
+
     $.getJSON("/gamedata", function (data) {
+      setTimeout(removeLoader, 500);
+
+      function removeLoader() {
+        $("#loadingDiv").fadeOut(1000, function () {
+
+          $('.card').fadeTo('opacity', '1');
+          $('.label').fadeTo('opacity', '1');
+          $('.info').fadeTo('opacity', '1');
+          $('.button').fadeTo('opacity', '1');
+        });
+        $(".progress-bar").fadeOut(1000);
+      }
+
 
       //Store JSON data in an array
       var info = [];
@@ -65,7 +79,7 @@
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Display the result in the element with id="demo"
+        // Display the result in the element with id="countdown"
         document.getElementById("countdown").innerHTML = days + "D " + hours + "H " + minutes + "M " + seconds + "S ";
 
         // If the count down is finished, write some text
@@ -74,6 +88,7 @@
           document.getElementById("demo").innerHTML = "LIVE";
         }
       }, 1000);
+
 
       $("<p/>", {
         html: info[0],
@@ -125,6 +140,12 @@
     });
   </script>
 
+  <div id=loadingDiv>
+    <img class="loader fade-image" id="animate" src="design/fc-barcelona.svg" width="100" height="100"></img>
+  </div>
+  <div class="progress-bar">
+    <div class="bar-progress"></div>
+  </div>
   <div class="button" href=#>
     <span class="material-icons-outlined" style="font-size: 40px;">
       dark_mode

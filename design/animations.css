@@ -161,6 +161,36 @@
     }
 }
 .fade-bg-and-shadow-reverse {
-    animation: fade-bg-and-shadow-reverse 1000ms ease 1;
+    animation: fade-bg-and-shadow-reverse 1000ms ease-in-out 1;
     animation-fill-mode: forwards;
+}
+
+@keyframes fade-image {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-image {
+    animation: fade-image 3000ms ease infinite;
+}
+
+@keyframes bar-progress {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%
+    }
+}
+
+.bar-progress {
+    animation: bar-progress 3000ms ease forwards;
 }

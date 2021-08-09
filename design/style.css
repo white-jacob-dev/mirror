@@ -23,6 +23,36 @@ body {
 	background-size: 500% 500%;
 }
 
+#loadingDiv {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.progress-bar {
+    background: #EDBB00;
+    border-radius: 10px;
+    width: 200px;
+    padding: 3px;
+    position: absolute;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .progress-bar>div {
+    background: repeating-linear-gradient(
+    90deg,
+    #004D98,
+    #004D98 20px,
+    #A50044 20px,
+    #A50044 40px
+    );
+    height: 5px;
+    border-radius: 10px;
+  }
+
 .card {
     width: fit-content;
     text-align: center;
@@ -33,6 +63,7 @@ body {
     margin-bottom: 8%;
     margin-top: 8%;
     user-select: none;
+    opacity: 0;
 }
 .dark-card {
     box-shadow: -5px -6px 16px rgba(195, 200, 205, 0.04), 6px 6px 28px rgba(0, 0, 0, 0.3);
@@ -45,6 +76,7 @@ body {
     padding-left: 25px;
     user-select: none;
     color: #31456a;
+    opacity: 0;
 }
 .dark-label {
     color: #D6E1EF
@@ -57,6 +89,7 @@ body {
     padding-right: 25px;
     user-select: none;
     color: #31456a;
+    opacity: 0;
 }
 .dark-info {
     color: #D6E1EF
@@ -75,6 +108,7 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    opacity: 0;
 }
 /* .button:active {
     box-shadow: inset -20px -20px 50px #ffffff, inset 20px 20px 50px rgba(136, 165, 191, 0.58),
@@ -96,4 +130,5 @@ body {
 .material-icons-outlined.dark { 
     user-select: none;
 }
+
 
