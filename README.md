@@ -2,7 +2,7 @@
 
 A visually appealing landing page that displays the soccer team Barcelona FC's next game data in my current time-zone, fetched from their website at https://www.fcbarcelona.com/en/, so that I no longer need to look up game times.
 
-This project was a personal test of my vanilla JS web skills and includes fetching data using puppeteer to fetch dynamic data from the web, and a completely vanilla implementation of a complex dark mode toggle animation
+This project was a personal test of my vanilla JS web skills and includes fetching data using puppeteer to get dynamic data from the web, and a completely vanilla implementation of a complex dark mode toggle animation
 
 
 ## Installation
